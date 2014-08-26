@@ -1,7 +1,6 @@
 package coderpills.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,15 +13,14 @@ import coderpills.models.UserDao;
 public class UserController {
 
   @Autowired
-  private ApplicationContext _appContext;
+  private UserDao _userDao;
   
   @RequestMapping(value="/delete")
   @ResponseBody
   public String delete(long id) {
     try {
       User user = new User(id);
-      UserDao userDao = _appContext.getBean(UserDao.class);
-      userDao.delete(user);
+      _userDao.delete(user);
     }
     catch(Exception ex) {
       return ex.getMessage();
@@ -35,12 +33,11 @@ public class UserController {
   public String getByEmail(String email) {
     String userId;
     try {
-      UserDao userDao = _appContext.getBean(UserDao.class);
-      User user = userDao.getByEmail(email);
+      User user = _userDao.getByEmail(email);
       userId = String.valueOf(user.getId());
     }
     catch(Exception ex) {
-      return ex.getMessage();
+      return "User not found";
     }
     return "The user id is: " + userId;
   }
@@ -50,8 +47,7 @@ public class UserController {
   public String create(String email, String name) {
     try {
       User user = new User(email, name);
-      UserDao userDao = _appContext.getBean(UserDao.class);
-      userDao.save(user);
+      _userDao.save(user);
     }
     catch(Exception ex) {
       return ex.getMessage();
