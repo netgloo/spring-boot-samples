@@ -8,12 +8,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import coderpills.models.User;
 import coderpills.models.UserDao;
 
+/**
+ * Class UserController
+ */
 @Controller
 public class UserController {
 
+  // ===============
+  // PRIVATE METHODS
+  // ===============
+  
+  // Wire the UserDao that will be used inside this controller.
   @Autowired
   private UserDao _userDao;
   
+  // ===============
+  // PRIVATE METHODS
+  // ===============
+
+  /**
+   * Method create
+   * <br/>
+   * Create a new user with an auto-generated id and email and name as passed 
+   * values.
+   */
   @RequestMapping(value="/create")
   @ResponseBody
   public String create(String email, String name) {
@@ -27,6 +45,11 @@ public class UserController {
     return "User succesfully created!";
   }
   
+  /**
+   * Method delete
+   * <br/>
+   * Delete the user with the passed id.
+   */
   @RequestMapping(value="/delete")
   @ResponseBody
   public String delete(long id) {
@@ -40,6 +63,11 @@ public class UserController {
     return "User succesfully deleted!";
   }
   
+  /**
+   * Method getByEmail
+   * <br/>
+   * Retrieve the id for the user with the passed email address.
+   */
   @RequestMapping(value="/get-by-email")
   @ResponseBody
   public String getByEmail(String email) {
@@ -54,6 +82,11 @@ public class UserController {
     return "The user id is: " + userId;
   }
   
+  /**
+   * Method updateName
+   * <br/>
+   * Update the email and the name for the user indentified by the passed id.
+   */
   @RequestMapping(value="/update")
   @ResponseBody
   public String updateName(long id, String email, String name) {
@@ -67,6 +100,6 @@ public class UserController {
       return ex.toString();
     }
     return "User succesfully updated!";
-  }
+  } 
 
 } // class UserController

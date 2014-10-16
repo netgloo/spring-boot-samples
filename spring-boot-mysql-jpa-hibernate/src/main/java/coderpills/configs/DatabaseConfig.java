@@ -44,7 +44,7 @@ public class DatabaseConfig {
   /**
    * Method dataSource
    * <br />
-   * Defines the database connection informations in a DataSource object.
+   * DataSource definition for database connection.
    */
   @Bean
   public DataSource dataSource() {
@@ -67,6 +67,8 @@ public class DatabaseConfig {
         new LocalContainerEntityManagerFactoryBean();
     
     entityManagerFactory.setDataSource(_dataSource);
+    
+    // Classpath scanning of @Component, @Service, etc annotated class
     entityManagerFactory.setPackagesToScan(
         _env.getProperty("entitymanager.packagesToScan"));
     
