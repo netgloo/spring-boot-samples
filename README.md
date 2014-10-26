@@ -1,1 +1,1 @@
-See [http://coderpills.wordpress.com]
+See http://coderpills.wordpress.com
