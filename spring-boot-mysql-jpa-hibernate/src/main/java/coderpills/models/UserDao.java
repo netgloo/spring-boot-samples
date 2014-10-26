@@ -10,10 +10,13 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Class UserDao
- * <br/>
+ * <br />
  * This class is used to access data for the User entity.
+ * Repository annotation allows the component scanning support to find and 
+ * configure the DAO wihtout any XML configuration and also provide the Spring 
+ * exceptiom translation.
  * Since we've setup setPackagesToScan and transaction manager on
- * DatabaseConfig, any bean method annotated with @Transactional will cause
+ * DatabaseConfig, any bean method annotated with Transactional will cause
  * Spring to magically call begin() and commit() at the start/end of the
  * method. If exception occurs it will also call rollback().
  */

@@ -27,8 +27,6 @@ public class UserController {
   // ===============
 
   /**
-   * Method create
-   * <br/>
    * Create a new user with an auto-generated id and email and name as passed 
    * values.
    */
@@ -40,14 +38,12 @@ public class UserController {
       _userDao.create(user);
     }
     catch (Exception ex) {
-      return ex.toString();
+      return "Error creating the user: " + ex.toString();
     }
     return "User succesfully created!";
   }
   
   /**
-   * Method delete
-   * <br/>
    * Delete the user with the passed id.
    */
   @RequestMapping(value="/delete")
@@ -58,14 +54,12 @@ public class UserController {
       _userDao.delete(user);
     }
     catch (Exception ex) {
-      return ex.toString();
+      return "Error deleting the user: " + ex.toString();
     }
     return "User succesfully deleted!";
   }
   
   /**
-   * Method getByEmail
-   * <br/>
    * Retrieve the id for the user with the passed email address.
    */
   @RequestMapping(value="/get-by-email")
@@ -77,14 +71,12 @@ public class UserController {
       userId = String.valueOf(user.getId());
     }
     catch (Exception ex) {
-      return "User not found";
+      return "User not found: " + ex.toString();
     }
     return "The user id is: " + userId;
   }
   
   /**
-   * Method updateName
-   * <br/>
    * Update the email and the name for the user indentified by the passed id.
    */
   @RequestMapping(value="/update")
@@ -97,7 +89,7 @@ public class UserController {
       _userDao.update(user);
     }
     catch (Exception ex) {
-      return ex.toString();
+      return "Error updating the user: " + ex.toString();
     }
     return "User succesfully updated!";
   } 
