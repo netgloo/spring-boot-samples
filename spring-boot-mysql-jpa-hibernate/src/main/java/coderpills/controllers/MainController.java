@@ -10,7 +10,7 @@ public class MainController {
   @RequestMapping("/")
   @ResponseBody
   public String index() {
-    return "index page";
+    return "<a href='http://coderpills.wordpress.com'>by coderpills</a>";
   }
 
 }

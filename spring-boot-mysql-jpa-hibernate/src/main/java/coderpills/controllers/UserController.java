@@ -14,9 +14,9 @@ import coderpills.models.UserDao;
 @Controller
 public class UserController {
 
-  // ===============
-  // PRIVATE METHODS
-  // ===============
+  // ==============
+  // PRIVATE FIELDS
+  // ==============
   
   // Wire the UserDao that will be used inside this controller.
   @Autowired
