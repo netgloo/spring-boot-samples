@@ -1,4 +1,4 @@
-package coderpills.configs;
+package netgloo.configs;
 
 import java.util.Properties;
 

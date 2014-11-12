@@ -1,4 +1,4 @@
-package coderpills.models;
+package netgloo.models;
 
 import java.util.List;
 
