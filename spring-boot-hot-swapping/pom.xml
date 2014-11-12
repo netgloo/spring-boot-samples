@@ -5,12 +5,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>coderpills</groupId>
+  <groupId>netgloo</groupId>
   <artifactId>spring-boot-hot-swapping</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <name>spring-boot-hot-swapping</name>
-  <description>Hot Swapping Demo</description>
+  <description>Hot swapping demo</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -26,18 +26,13 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
   </dependencies>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <start-class>hotswapping.Application</start-class>
+    <start-class>netgloo.Application</start-class>
     <java.version>1.7</java.version>
   </properties>
 
