@@ -1,4 +1,4 @@
-package coderpills.models;
+package netgloo.models;
 
 import java.util.List;
 
@@ -9,8 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 /**
- * Class UserDao
- * <br />
  * This class is used to access data for the User entity.
  * Repository annotation allows the component scanning support to find and 
  * configure the DAO wihtout any XML configuration and also provide the Spring 

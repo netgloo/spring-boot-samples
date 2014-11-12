@@ -1,4 +1,4 @@
-package coderpills;
+package netgloo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
