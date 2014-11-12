@@ -1,17 +1,17 @@
-package coderpills.controllers;
+package netgloo.controllers;
+
+import netgloo.models.User;
+import netgloo.models.UserDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import coderpills.models.User;
-import coderpills.models.UserDao;
-
 /**
  * A class to test the interaction with MySQL database using the UserDao class.
  *
- * @author coderpills
+ * @author netgloo
  */
 @Controller
 public class UserController {
