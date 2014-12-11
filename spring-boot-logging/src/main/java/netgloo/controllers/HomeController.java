@@ -28,4 +28,4 @@ public class HomeController {
     return "<a href='http://netgloo.com'>by netgloo</a>";
   }
 
-} // BasicController
+} // class HomeController
