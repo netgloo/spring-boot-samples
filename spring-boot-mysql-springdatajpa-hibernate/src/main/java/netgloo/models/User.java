@@ -45,12 +45,12 @@ public class User {
     this.id = id;
   }
   
-  // Getter and setter methods
-
   public User(String email, String name) {
     this.email = email;
     this.name = name;
   }
+
+  // Getter and setter methods
 
   public long getId() {
     return id;

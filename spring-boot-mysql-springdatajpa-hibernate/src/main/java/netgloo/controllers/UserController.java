@@ -50,7 +50,7 @@ public class UserController {
   /**
    * Delete the user having the passed id.
    * 
-   * @param email the email for the user to delete
+   * @param id the id of the user to delete
    * @return a string describing if the user is succesfully deleted or not.
    */
   @RequestMapping("/delete")
