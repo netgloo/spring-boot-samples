@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * A class to test the interaction with MySQL database using the UserDao class.
+ * A class to test interactions with the MySQL database using the UserDao class.
  *
  * @author netgloo
  */
@@ -21,7 +21,7 @@ public class UserController {
   // ==============
 
   @Autowired
-  private UserDao _userDao;
+  private UserDao userDao;
   
   // ==============
   // PUBLIC METHODS
@@ -37,14 +37,15 @@ public class UserController {
   @RequestMapping("/create")
   @ResponseBody
   public String create(String email, String name) {
+    User user = null;
     try {
-      User user = new User(email, name);
-      _userDao.save(user);
+      user = new User(email, name);
+      userDao.save(user);
     }
     catch (Exception ex) {
       return "Error creating the user: " + ex.toString();
     }
-    return "User succesfully created!";
+    return "User succesfully created! (id = " + user.getId() + ")";
   }
   
   /**
@@ -58,7 +59,7 @@ public class UserController {
   public String delete(long id) {
     try {
       User user = new User(id);
-      _userDao.delete(user);
+      userDao.delete(user);
     }
     catch (Exception ex) {
       return "Error deleting the user:" + ex.toString();
@@ -77,7 +78,7 @@ public class UserController {
   public String getByEmail(String email) {
     String userId;
     try {
-      User user = _userDao.findByEmail(email);
+      User user = userDao.findByEmail(email);
       userId = String.valueOf(user.getId());
     }
     catch (Exception ex) {
@@ -99,10 +100,10 @@ public class UserController {
   @ResponseBody
   public String updateUser(long id, String email, String name) {
     try {
-      User user = _userDao.findOne(id);
+      User user = userDao.findOne(id);
       user.setEmail(email);
       user.setName(name);
-      _userDao.save(user);
+      userDao.save(user);
     }
     catch (Exception ex) {
       return "Error updating the user: " + ex.toString();
