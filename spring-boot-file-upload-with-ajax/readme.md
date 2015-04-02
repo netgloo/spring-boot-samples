@@ -5,7 +5,19 @@ How to uploading a file using Ajax with a Spring Boot web application server sid
 See here for more informations:
 http://blog.netgloo.com/2015/02/08/spring-boot-file-upload-with-ajax/
 
+### Usage
+
+- Launch the application and go on http://localhost:8080/
+- Click the *Browse...* button and choose a file to upload (of size less 
+  than 3MB)
+- Go in the directory you have set in the `application.properties` file: the
+  uploaded file will be copied here.
+
 ### Build and run
+
+#### Configurations
+
+Open the `application.properties` file and set your own configurations.
 
 #### Prerequisites
 
@@ -17,4 +29,8 @@ http://blog.netgloo.com/2015/02/08/spring-boot-file-upload-with-ajax/
 Go on the project's root folder, then type:
 
     $ mvn package
-    $ java -jar target/spring-boot-file-upload-with-ajax-0.0.1-SNAPSHOT.jar
+    $ java -jar target/<project-name>-<version>.jar
+
+#### From Eclipse (Spring Tool Suite)
+
+Import as *Existing Maven Project* and run it as *Spring Boot App*.
