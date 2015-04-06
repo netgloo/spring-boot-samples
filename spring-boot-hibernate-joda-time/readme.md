@@ -1,0 +1,32 @@
+## Spring Boot: using Joda Time on JPA entities with Hibernate
+
+### Usage
+
+- Run the application
+- Take a look to your database schema: Hibernate creates the table `users`
+  with date columns having the expected types.
+- Go on *http://localhost:8080/*, insert a date in the form and click *save*:
+  will be created a new entry in the database's table with the given date.
+
+### Build and run
+
+#### Configurations
+
+Open the `application.properties` file and set your own configurations 
+(mainly database's connection parameters).
+
+#### Prerequisites
+
+- Java 7 or 8
+- Maven 3
+
+#### From terminal
+
+Go on the project's root folder, then type:
+
+    $ mvn package
+    $ java -jar target/<project-name>-<version>.jar
+
+#### From Eclipse (Spring Tool Suite)
+
+Import as *Existing Maven Project* and run it as *Spring Boot App*.

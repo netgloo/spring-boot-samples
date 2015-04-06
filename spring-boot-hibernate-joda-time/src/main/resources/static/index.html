@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="jquery.serialize-object.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Insert brithday date form -->
+  <h2>Create a new user</h2>
+  <p>Insert the user's birthday date with the right format and save it!</p>
+  <form id="birthday-date-form">
+    <label for="birthday-date">Birthday date (yyyy-MM-dd):</label>
+    <input id="birthday-date" type="text" name="birthdayDate" />
+    <button id="submit-birthday-date" type="submit">Save</button>
+    <span id="result-message"></span>
+  </form>
+  <br />
+  <a href='http://netgloo.com'>by netgloo</a>
+  
+  <!-- Javascript functions -->
+  <script>
+  
+    // bind the on-change event for the input element (triggered when a file
+    // is chosen)
+    $(document).ready(function() {
+      $("#birthday-date-form").on("submit", saveUser);
+    });
+    
+    /**
+     * Save a new user sending it via Ajax at the Spring Boot server.
+     */
+    function saveUser(event) {
+      event.preventDefault();
+      $.ajax({
+        url: "/user",
+        type: "POST",
+        data: $("#birthday-date-form").serializeJSON(),
+        contentType: "application/json; charset=UTF-8",
+        success: function () {
+          $("#result-message")
+              .text("User succesfully saved.");
+        },
+        error: function () {
+          $("#result-message")
+            .text("An error occurred saving the user (check the date format).");
+        }
+      });
+    } // function saveUser
+  </script>
+  
+</body>
+
+</html>
