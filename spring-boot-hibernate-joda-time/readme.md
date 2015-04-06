@@ -1,5 +1,7 @@
 ## Spring Boot: using Joda Time on JPA entities with Hibernate
 
+See here for more informations: http://blog.netgloo.com/2015/04/06/spring-boot-using-joda-time-on-jpa-entity-with-hibernate/
+
 ### Usage
 
 - Run the application
@@ -17,7 +19,7 @@ Open the `application.properties` file and set your own configurations
 
 #### Prerequisites
 
-- Java 7 or 8
+- Java 7
 - Maven 3
 
 #### From terminal
