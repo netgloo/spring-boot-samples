@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
@@ -24,12 +23,12 @@ public class User {
 
   // Mapped as DATETIME (on MySQL)
   // For JSON binding use the format: "1970-01-01T00:00:00.000+0000"
-  @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+  // @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
   private DateTime createTime;
 
   // Mapped as DATE (on MySQL)
   // For JSON binding use the format: "1970-01-01" (yyyy-MM-dd)
-  @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+  // @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
   private LocalDate birthdayDate;
   
   // ========================
