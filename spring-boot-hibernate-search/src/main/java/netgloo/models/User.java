@@ -23,10 +23,10 @@ import org.hibernate.search.annotations.Store;
 @Table(name = "users")
 public class User {
 
-  // ==============
+  // ------------------------
   // PRIVATE FIELDS
-  // ==============
-  
+  // ------------------------
+
   // Hibernate Search needs to store the entity identifier in the index for 
   // each entity. By default, it will use for this purpose the field marked 
   // with Id.
@@ -54,9 +54,10 @@ public class User {
   @NotNull
   private String city;
 
-  // ==============
+
+  // ------------------------
   // PUBLIC METHODS
-  // ==============
+  // ------------------------
   
   public User() { }
 
@@ -102,5 +103,6 @@ public class User {
   public void setCity(String value) {
     this.city = value;
   }
-  
+
+
 } // class User

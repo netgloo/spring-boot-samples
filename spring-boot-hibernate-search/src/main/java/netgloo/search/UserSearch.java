@@ -23,17 +23,18 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public class UserSearch {
 
-  // ==============
+  // ------------------------
   // PRIVATE FIELDS
-  // ==============
+  // ------------------------
   
   // Spring will inject here the entity manager object
   @PersistenceContext
-  private EntityManager _entityManager;
-    
-  // ==============
+  private EntityManager entityManager;
+
+
+  // ------------------------
   // PUBLIC METHODS
-  // ==============
+  // ------------------------
   
   /**
    * A basic search for the entity User. The search is done by exact match per
@@ -46,7 +47,7 @@ public class UserSearch {
     // get the full text entity manager
     FullTextEntityManager fullTextEntityManager =
         org.hibernate.search.jpa.Search.
-        getFullTextEntityManager(_entityManager);
+        getFullTextEntityManager(entityManager);
     
     // create the query using Hibernate Search query DSL
     QueryBuilder queryBuilder = 
@@ -71,5 +72,6 @@ public class UserSearch {
     
     return results;
   } // method search
+
 
 } // class UserSearch

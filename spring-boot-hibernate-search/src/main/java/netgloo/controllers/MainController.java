@@ -19,17 +19,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 
-  // ==============
+  // ------------------------
   // PRIVATE FIELDS
-  // ==============
-  
+  // ------------------------
+
   // Inject the UserSearch object
   @Autowired
-  UserSearch _userSearch;
+  private UserSearch userSearch;
 
-  // ==============
+
+  // ------------------------
   // PUBLIC METHODS
-  // ==============
+  // ------------------------
 
   /**
    * Index main page.
@@ -40,6 +41,7 @@ public class MainController {
     return "<a href='http://netgloo.com/'>by netgloo</a>";
   }
 
+
   /**
    * Show search results for the given query.
    *
@@ -49,7 +51,7 @@ public class MainController {
   public String search(String q, Model model) {
     List<User> searchResults = null;
     try {
-      searchResults = _userSearch.search(q);
+      searchResults = userSearch.search(q);
     }
     catch (Exception ex) {
       // here you should handle unexpected errors
@@ -59,5 +61,6 @@ public class MainController {
     model.addAttribute("searchResults", searchResults);
     return "search";
   }
-  
+
+
 } // class MainController
