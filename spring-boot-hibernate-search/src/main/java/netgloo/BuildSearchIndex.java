@@ -21,16 +21,17 @@ import org.springframework.stereotype.Component;
 public class BuildSearchIndex
 implements ApplicationListener<ContextRefreshedEvent> {
   
-  // ==============
+  // ------------------------
   // PRIVATE FIELDS
-  // ==============
+  // ------------------------
   
   @PersistenceContext
-  private EntityManager _entityManager;
+  private EntityManager entityManager;
   
-  // ==============
+
+  // ------------------------
   // PUBLIC METHODS
-  // ==============
+  // ------------------------
 
   /**
    * Create an initial Lucene index for the data already present in the
@@ -44,7 +45,7 @@ implements ApplicationListener<ContextRefreshedEvent> {
   public void onApplicationEvent(final ContextRefreshedEvent event) {
     try {
       FullTextEntityManager fullTextEntityManager =
-          Search.getFullTextEntityManager(_entityManager);
+          Search.getFullTextEntityManager(entityManager);
       fullTextEntityManager.createIndexer().startAndWait();
     }
     catch (InterruptedException e) {
@@ -54,6 +55,7 @@ implements ApplicationListener<ContextRefreshedEvent> {
     }
     return;
   }
-  
+
+
 } // class BuildSearchIndex
 
