@@ -31,8 +31,7 @@ Open the `application.properties` file and set your own configurations.
 
 Go on the project's root folder, then type:
 
-    $ mvn package
-    $ java -jar target/<project-name>-<version>.jar
+    $ mvn spring-boot:run
 
 #### From Eclipse (Spring Tool Suite)
 
