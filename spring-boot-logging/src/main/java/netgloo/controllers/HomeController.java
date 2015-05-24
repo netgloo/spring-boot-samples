@@ -24,7 +24,8 @@ public class HomeController {
     // Log a formatted string with parameters
     log.info("another info log with {}, {} and {} arguments", 1, "2", 3.0);
     
-    return "<a href='http://netgloo.com'>by netgloo</a>";
+    return "Proudly handcrafted by " +
+        "<a href='http://netgloo.com/en'>netgloo</a> :)";
   }
 
 } // class HomeController
