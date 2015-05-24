@@ -16,23 +16,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
-  // ==============
-  // PRIVATE FIELDS
-  // ==============
-
-  @Autowired
-  private UserDao userDao;
-  
-  // ==============
+  // ------------------------
   // PUBLIC METHODS
-  // ==============
+  // ------------------------
   
   /**
-   * Create a new user and save it in the database.
+   * /create  --> Create a new user and save it in the database.
    * 
-   * @param email user email
-   * @param name use name
-   * @return a string describing if the user is succesfully created or not.
+   * @param email User's email
+   * @param name User's name
+   * @return A string describing if the user is succesfully created or not.
    */
   @RequestMapping("/create")
   @ResponseBody
@@ -49,10 +42,10 @@ public class UserController {
   }
   
   /**
-   * Delete the user having the passed id.
+   * /delete  --> Delete the user having the passed id.
    * 
-   * @param id the id of the user to delete
-   * @return a string describing if the user is succesfully deleted or not.
+   * @param id The id of the user to delete
+   * @return A string describing if the user is succesfully deleted or not.
    */
   @RequestMapping("/delete")
   @ResponseBody
@@ -68,10 +61,10 @@ public class UserController {
   }
   
   /**
-   * Return the id for the user having the passed email.
+   * /get-by-email  --> Return the id for the user having the passed email.
    * 
-   * @param email the email to search in the database.
-   * @return the user id or a message error if the user is not found.
+   * @param email The email to search in the database.
+   * @return The user id or a message error if the user is not found.
    */
   @RequestMapping("/get-by-email")
   @ResponseBody
@@ -88,13 +81,13 @@ public class UserController {
   }
   
   /**
-   * Update the email and the name for the user in the database having the
-   * passed id.
+   * /update  --> Update the email and the name for the user in the database 
+   * having the passed id.
    * 
-   * @param id the id for the user to update.
-   * @param email the new email.
-   * @param name the new name.
-   * @return a string describing if the user is succesfully updated or not.
+   * @param id The id for the user to update.
+   * @param email The new email.
+   * @param name The new name.
+   * @return A string describing if the user is succesfully updated or not.
    */
   @RequestMapping("/update")
   @ResponseBody
@@ -111,4 +104,11 @@ public class UserController {
     return "User succesfully updated!";
   }
 
+  // ------------------------
+  // PRIVATE FIELDS
+  // ------------------------
+
+  @Autowired
+  private UserDao userDao;
+  
 } // class UserController
