@@ -16,7 +16,10 @@
     </li>
   </ol>
   
-  <p><strong>Hint</strong>: the query "<a href='/search?q=amy'>amy</a>" should return some results.</p>
+  <p th:if="${searchResults.isEmpty()}">
+    <strong>Hint</strong>: the query "<a href='/search?q=amy'>amy</a>" 
+    should return some results.
+  </p>
 
 </body>
 
