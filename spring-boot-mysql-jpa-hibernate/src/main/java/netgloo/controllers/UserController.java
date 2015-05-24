@@ -14,17 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
-  // ==============
-  // PRIVATE FIELDS
-  // ==============
-  
-  // Wire the UserDao that will be used inside this controller.
-  @Autowired
-  private UserDao _userDao;
-  
-  // ===============
-  // PRIVATE METHODS
-  // ===============
+  // ------------------------
+  // PUBLIC METHODS
+  // ------------------------
 
   /**
    * Create a new user with an auto-generated id and email and name as passed 
@@ -35,7 +27,7 @@ public class UserController {
   public String create(String email, String name) {
     try {
       User user = new User(email, name);
-      _userDao.create(user);
+      userDao.create(user);
     }
     catch (Exception ex) {
       return "Error creating the user: " + ex.toString();
@@ -51,7 +43,7 @@ public class UserController {
   public String delete(long id) {
     try {
       User user = new User(id);
-      _userDao.delete(user);
+      userDao.delete(user);
     }
     catch (Exception ex) {
       return "Error deleting the user: " + ex.toString();
@@ -67,7 +59,7 @@ public class UserController {
   public String getByEmail(String email) {
     String userId;
     try {
-      User user = _userDao.getByEmail(email);
+      User user = userDao.getByEmail(email);
       userId = String.valueOf(user.getId());
     }
     catch (Exception ex) {
@@ -83,10 +75,10 @@ public class UserController {
   @ResponseBody
   public String updateName(long id, String email, String name) {
     try {
-      User user = _userDao.getById(id);
+      User user = userDao.getById(id);
       user.setEmail(email);
       user.setName(name);
-      _userDao.update(user);
+      userDao.update(user);
     }
     catch (Exception ex) {
       return "Error updating the user: " + ex.toString();
@@ -94,4 +86,12 @@ public class UserController {
     return "User succesfully updated!";
   } 
 
+  // ------------------------
+  // PRIVATE FIELDS
+  // ------------------------
+  
+  // Wire the UserDao used inside this controller.
+  @Autowired
+  private UserDao userDao;
+  
 } // class UserController

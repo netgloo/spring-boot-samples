@@ -22,34 +22,21 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class DatabaseConfig {
 
-  // ==============
-  // PRIVATE FIELDS
-  // ==============
-  
-  @Autowired
-  private Environment _env;
-
-  @Autowired
-  private DataSource _dataSource;
-
-  @Autowired
-  private LocalContainerEntityManagerFactoryBean _entityManagerFactory;
-
-  // ==============
+  // ------------------------
   // PUBLIC METHODS
-  // ==============
+  // ------------------------
 
   /**
    * DataSource definition for database connection. Settings are read from
-   * the application.properties file (using the _env object).
+   * the application.properties file (using the env object).
    */
   @Bean
   public DataSource dataSource() {
     DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    dataSource.setDriverClassName(_env.getProperty("db.driver"));
-    dataSource.setUrl(_env.getProperty("db.url"));
-    dataSource.setUsername(_env.getProperty("db.username"));
-    dataSource.setPassword(_env.getProperty("db.password"));
+    dataSource.setDriverClassName(env.getProperty("db.driver"));
+    dataSource.setUrl(env.getProperty("db.url"));
+    dataSource.setUsername(env.getProperty("db.username"));
+    dataSource.setPassword(env.getProperty("db.password"));
     return dataSource;
   }
 
@@ -61,11 +48,11 @@ public class DatabaseConfig {
     LocalContainerEntityManagerFactoryBean entityManagerFactory =
         new LocalContainerEntityManagerFactoryBean();
     
-    entityManagerFactory.setDataSource(_dataSource);
+    entityManagerFactory.setDataSource(dataSource);
     
     // Classpath scanning of @Component, @Service, etc annotated class
     entityManagerFactory.setPackagesToScan(
-        _env.getProperty("entitymanager.packagesToScan"));
+        env.getProperty("entitymanager.packagesToScan"));
     
     // Vendor adapter
     HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -75,13 +62,13 @@ public class DatabaseConfig {
     Properties additionalProperties = new Properties();
     additionalProperties.put(
         "hibernate.dialect", 
-        _env.getProperty("hibernate.dialect"));
+        env.getProperty("hibernate.dialect"));
     additionalProperties.put(
         "hibernate.show_sql", 
-        _env.getProperty("hibernate.show_sql"));
+        env.getProperty("hibernate.show_sql"));
     additionalProperties.put(
         "hibernate.hbm2ddl.auto", 
-        _env.getProperty("hibernate.hbm2ddl.auto"));
+        env.getProperty("hibernate.hbm2ddl.auto"));
     entityManagerFactory.setJpaProperties(additionalProperties);
     
     return entityManagerFactory;
@@ -95,7 +82,7 @@ public class DatabaseConfig {
     JpaTransactionManager transactionManager = 
         new JpaTransactionManager();
     transactionManager.setEntityManagerFactory(
-        _entityManagerFactory.getObject());
+        entityManagerFactory.getObject());
     return transactionManager;
   }
   
@@ -110,5 +97,20 @@ public class DatabaseConfig {
   public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
     return new PersistenceExceptionTranslationPostProcessor();
   }
+
+
+  // ------------------------
+  // PRIVATE FIELDS
+  // ------------------------
+  
+  @Autowired
+  private Environment env;
+
+  @Autowired
+  private DataSource dataSource;
+
+  @Autowired
+  private LocalContainerEntityManagerFactoryBean entityManagerFactory;
+
 
 } // class DatabaseConfig
