@@ -27,11 +27,11 @@ public class User {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   
-  // The user email
+  // The user's email
   @NotNull
   private String email;
   
-  // The user name
+  // The user's name
   @NotNull
   private String name;
 
