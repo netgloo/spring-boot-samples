@@ -25,7 +25,7 @@ public class HomeController {
     log.info("another info log with {}, {} and {} arguments", 1, "2", 3.0);
     
     return "Proudly handcrafted by " +
-        "<a href='http://netgloo.com/en'>netgloo</a> :)";
+        "<a href='http://netgloo.com/en'>Netgloo</a> :)";
   }
 
 } // class HomeController
