@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="sockjs-0.3.4.min.js"></script>
+    <script src="stomp.min.js"></script>
+  </head>
+
+  <body>
+    <p th:inline="text">
+      You are logged as: <b>[[${#httpServletRequest.remoteUser}]]</b>
+      (<a href="/logout">logout</a>)
+    </p>
+    <p>
+      Click the button below to perform an action.
+      <br />
+      <strong>UserA</strong> will be notified via web socket.
+    </p>
+    <input id="do-some-action" type="button" value="Click me" />
+
+    <!-- Javascript functions -->
+    <script>
+
+      /**
+       * Send an action to the server.
+       */
+      function sendAction(event) {
+        event.preventDefault();
+        $.ajax({
+          url: "/some-action",
+          type: "POST"
+        });
+        return;
+      } // function sendAction
+      
+      /**
+       * Init operations.
+       */
+      $(document).ready(function() {
+        
+        // Bind the on-click event for the button element.
+        $("#do-some-action").on("click", sendAction);
+        
+      });
+
+    </script>
+
+	<br />
+    <hr />
+    Proudly handcrafted by
+    <a href='http://netgloo.com/en'>Netgloo</a>
+
+  </body>
+
+</html>

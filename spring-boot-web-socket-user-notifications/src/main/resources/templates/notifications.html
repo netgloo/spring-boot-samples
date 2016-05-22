@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="sockjs-0.3.4.min.js"></script>
+    <script src="stomp.min.js"></script>
+  </head>
+
+  <body>
+    <p th:inline="text">
+      You are logged as: <b>[[${#httpServletRequest.remoteUser}]]</b>
+      (<a href="/logout">logout</a>)
+    </p>
+    <p>
+      Notifications received on the web socket channel will be displayed below:
+    </p>
+    <textarea id="notifications-area" cols="60" rows="10" readonly="readonly"></textarea>
+    <br />
+    <div>
+      <a href='http://netgloo.com'>by netgloo</a>
+    </div>
+
+    <!-- Javascript functions -->
+    <script>
+
+      /**
+       * Open the web socket connection and subscribe the "/notify" channel
+       * with the function notify.
+       */
+      function connect() {
+        var socket = new SockJS('/ws');
+        var stompClient = Stomp.over(socket);
+        stompClient.connect({}, function(frame) {
+          stompClient.subscribe('/user/queue/notify', function(notification) {
+            notify(JSON.parse(notification.body).content);
+          });
+        });
+        return;
+      } // function connect
+      
+      /**
+       * Display the notification message.
+       */
+      function notify(message) {
+        $("#notifications-area").append(message + "\n");
+        return;
+      }
+      
+      /**
+       * Init operations.
+       */
+      $(document).ready(function() {
+        
+        // Start the web socket connection.
+        connect();
+        
+      });
+
+    </script>
+
+	<br />
+    <hr />
+    Proudly handcrafted by
+    <a href='http://netgloo.com/en'>Netgloo</a>
+
+  </body>
+
+</html>
