@@ -55,7 +55,7 @@ public class UserController {
       userDao.delete(user);
     }
     catch (Exception ex) {
-      return "Error deleting the user:" + ex.toString();
+      return "Error deleting the user: " + ex.toString();
     }
     return "User succesfully deleted!";
   }
