@@ -11,8 +11,8 @@ Open the `application.properties` file and set your own configurations.
 
 #### Prerequisites
 
-- Java 7
-- Maven 3
+- Java 8
+- Maven > 3.0
 
 #### From terminal
 
