@@ -36,10 +36,7 @@ implements ApplicationListener<ApplicationReadyEvent> {
   /**
    * Create an initial Lucene index for the data already present in the
    * database.
-   * This method is called during Spring's startup.
-   * 
-   * @param event Event raised when an ApplicationContext gets initialized or
-   * refreshed.
+   * This method is called when Spring's startup.
    */
   @Override
   public void onApplicationEvent(final ApplicationReadyEvent event) {
