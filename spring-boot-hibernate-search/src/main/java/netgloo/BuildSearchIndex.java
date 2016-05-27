@@ -50,12 +50,12 @@ implements ApplicationListener<ContextRefreshedEvent> {
     }
     catch (InterruptedException e) {
       System.out.println(
-          "An error occurred trying to build the serach index: " +
-          e.toString());
+        "An error occurred trying to build the serach index: " +
+         e.toString());
     }
     return;
   }
 
 
-} // class BuildSearchIndex
+} // class
 
