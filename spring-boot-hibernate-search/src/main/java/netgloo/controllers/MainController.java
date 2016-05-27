@@ -38,8 +38,8 @@ public class MainController {
   @RequestMapping("/")
   @ResponseBody
   public String index() {
-    return "Proudly handcrafted by " + 
-        "<a href='http://netgloo.com/en'>Netgloo</a> :)";
+    return "Try to go here: " + 
+      "<a href='/search?q=hola'>/search?q=hola</a>";
   }
 
 
