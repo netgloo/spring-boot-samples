@@ -10,7 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   /**
-   * Enables authentication with three in-memory users: UserA, UserB and UserC.
+   * Enable authentication with three in-memory users: UserA, UserB and UserC.
+   *
    * Spring Security will provide a default login form where insert username
    * and password.
    */
@@ -18,32 +19,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   public void configureGlobal(AuthenticationManagerBuilder auth)
   throws Exception {
     auth
-        // Defines three users with their passwords and roles
-        .inMemoryAuthentication()
-        .withUser("UserA").password("UserA").roles("USER")
-        .and()
-        .withUser("UserB").password("UserB").roles("USER")
-        .and()
-        .withUser("UserC").password("UserC").roles("USER");
+      // Defines three users with their passwords and roles
+      .inMemoryAuthentication()
+      .withUser("UserA").password("UserA").roles("USER")
+      .and()
+      .withUser("UserB").password("UserB").roles("USER")
+      .and()
+      .withUser("UserC").password("UserC").roles("USER");
     return;
   }
   
   /**
-   * Disable the CSRF protection (to simplify this demo) and enable the default
+   * Disable CSRF protection (to simplify this demo) and enable the default
    * login form.
    */
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
-        // Disable the CSRF protection
-        .csrf().disable()
-        // Set default configurations from Spring Security
-        .authorizeRequests()
-            .anyRequest().authenticated()
-            .and()
-        .formLogin()
-            .and()
-        .httpBasic();
+      // Disable CSRF protection
+      .csrf().disable()
+      // Set default configurations from Spring Security
+      .authorizeRequests()
+        .anyRequest().authenticated()
+        .and()
+      .formLogin()
+        .and()
+      .httpBasic();
     return;
   }
 

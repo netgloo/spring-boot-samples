@@ -14,12 +14,12 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
   /**
-   * Register Stomp endpoints, i.e. the url for open the WebSocket connection.
+   * Register Stomp endpoints: the url to open the WebSocket connection.
    */
   @Override
   public void registerStompEndpoints(StompEndpointRegistry registry) {
     
-    // Registers the "/ws" endpoint, enabling the SockJS protocol.
+    // Register the "/ws" endpoint, enabling the SockJS protocol.
     // SockJS is used (both client and server side) to allow alternative 
     // messaging options if WebSocket is not available.
     registry.addEndpoint("/ws").withSockJS();

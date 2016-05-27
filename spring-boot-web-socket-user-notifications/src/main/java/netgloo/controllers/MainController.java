@@ -34,13 +34,16 @@ public class MainController {
   }
 
   /**
-   * POST  /some-action  -> compute some action.
+   * POST  /some-action  -> do an action.
    * 
    * After the action is performed will be notified UserA.
    */
   @RequestMapping(value = "/some-action", method = RequestMethod.POST)
   @ResponseBody
   public ResponseEntity<?> someAction() {
+
+    // Do an action here
+    // ...
     
     // Send the notification to "UserA" (by username)
     notificationService.notify(

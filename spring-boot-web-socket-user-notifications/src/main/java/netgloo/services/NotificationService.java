@@ -17,12 +17,19 @@ public class NotificationService {
   private SimpMessagingTemplate messagingTemplate;
   
   /**
-   * Send notification to the user subscribed on channel "/user/queue/notify".
+   * Send notification to users subscribed on channel "/user/queue/notify".
+   *
+   * The message will be sent only to the user with the given username.
    * 
-   * @param user The username for the user to send notification.
+   * @param notification The notification message.
+   * @param username The username for the user to send notification.
    */
-  public void notify(Notification notification, String user) {
-    messagingTemplate.convertAndSendToUser(user, "/queue/notify", notification);
+  public void notify(Notification notification, String username) {
+    messagingTemplate.convertAndSendToUser(
+      username, 
+      "/queue/notify", 
+      notification
+    );
     return;
   }
   
