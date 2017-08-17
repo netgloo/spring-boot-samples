@@ -29,7 +29,7 @@ public class UserController {
    * @param name User's name
    * @return A string describing if the user is succesfully created or not.
    */
-  @RequestMapping(value="/create", method="RequestMethod.GET")
+  @RequestMapping(value="/create", method="RequestMethod.POST")
   @ResponseBody
   public String create(String email, String name) {
     User user = null;
