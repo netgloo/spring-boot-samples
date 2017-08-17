@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * A class to test interactions with the MySQL database using the UserDao class.
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class UserController {
-
+  
   // ------------------------
   // PUBLIC METHODS
   // ------------------------
@@ -27,7 +29,7 @@ public class UserController {
    * @param name User's name
    * @return A string describing if the user is succesfully created or not.
    */
-  @RequestMapping("/create")
+  @RequestMapping(value="/create", method="RequestMethod.GET")
   @ResponseBody
   public String create(String email, String name) {
     User user = null;
@@ -47,9 +49,9 @@ public class UserController {
    * @param id The id of the user to delete
    * @return A string describing if the user is succesfully deleted or not.
    */
-  @RequestMapping("/delete")
+  @RequestMapping(value="/delete/{id}", method="RequestMethod.DELETE")
   @ResponseBody
-  public String delete(long id) {
+  public String delete(@PathVariable long id) {
     try {
       User user = new User(id);
       userDao.delete(user);
@@ -66,7 +68,7 @@ public class UserController {
    * @param email The email to search in the database.
    * @return The user id or a message error if the user is not found.
    */
-  @RequestMapping("/get-by-email")
+  @RequestMapping(value="/get-by-email", method="RequestMethod.GET")
   @ResponseBody
   public String getByEmail(String email) {
     String userId;
@@ -89,7 +91,7 @@ public class UserController {
    * @param name The new name.
    * @return A string describing if the user is succesfully updated or not.
    */
-  @RequestMapping("/update")
+  @RequestMapping(value="/update", method="RequestMethod.PUT")
   @ResponseBody
   public String updateUser(long id, String email, String name) {
     try {
