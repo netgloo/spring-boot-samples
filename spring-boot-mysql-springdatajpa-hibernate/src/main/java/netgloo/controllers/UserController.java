@@ -25,7 +25,7 @@ public class UserController {
    * 
    * @param email User's email
    * @param name User's name
-   * @return A string describing if the user is succesfully created or not.
+   * @return A string describing if the user is successfully created or not.
    */
   @RequestMapping("/create")
   @ResponseBody
@@ -45,7 +45,7 @@ public class UserController {
    * /delete  --> Delete the user having the passed id.
    * 
    * @param id The id of the user to delete
-   * @return A string describing if the user is succesfully deleted or not.
+   * @return A string describing if the user is successfully deleted or not.
    */
   @RequestMapping("/delete")
   @ResponseBody
@@ -57,7 +57,7 @@ public class UserController {
     catch (Exception ex) {
       return "Error deleting the user: " + ex.toString();
     }
-    return "User succesfully deleted!";
+    return "User successfully deleted!";
   }
   
   /**
@@ -87,7 +87,7 @@ public class UserController {
    * @param id The id for the user to update.
    * @param email The new email.
    * @param name The new name.
-   * @return A string describing if the user is succesfully updated or not.
+   * @return A string describing if the user is successfully updated or not.
    */
   @RequestMapping("/update")
   @ResponseBody
@@ -101,7 +101,7 @@ public class UserController {
     catch (Exception ex) {
       return "Error updating the user: " + ex.toString();
     }
-    return "User succesfully updated!";
+    return "User successfully updated!";
   }
 
   // ------------------------
