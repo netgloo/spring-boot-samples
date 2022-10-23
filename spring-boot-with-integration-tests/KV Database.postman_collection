@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "b789b118-9f9f-4c1d-9fd5-497c7b2977a0",
+		"name": "InterviewApplication - KV Database",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19593238"
+	},
+	"item": [
+		{
+			"name": "GET ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/kv",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ONE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/kv",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST CREATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/kv?key=KVONLine&value=test",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kv"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "KVONLine"
+						},
+						{
+							"key": "value",
+							"value": "test"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT UPDATE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"kv_entity_id\": 2,\n    \"kv_entity_key\": \"KVOnline\",\n    \"kv_entity_value\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/kv",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT UPDATE Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"kv_entity_id\": 2,\n    \"kv_entity_key\": \"KVOnline\",\n    \"kv_entity_value\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/kv",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kv"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
